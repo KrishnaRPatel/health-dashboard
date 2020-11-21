@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   let ENV = {
-    modulePrefix: "ember-quickstart",
+    modulePrefix: "health-dashboard",
     environment,
     rootURL: "/",
     locationType: "auto",
@@ -17,14 +17,9 @@ module.exports = function (environment) {
       },
     },
 
-    firebase: {
-      apiKey: process.env.FIREBASE_DEV_API_KEY,
-      authDomain: "health-dashboard-7234e.firebaseapp.com",
-      databaseURL: "https://health-dashboard-7234e.firebaseio.com",
-      projectId: "health-dashboard-7234e",
-      storageBucket: "health-dashboard-7234e.appspot.com",
-      messagingSenderId: "1053734540949",
-      appId: "1:1053734540949:web:b635ad95ab30cd02afed9c",
+    supabase: {
+      SUPABASE_KEY: process.env.SUPABASE_KEY,
+      SUPABASE_URL: process.env.SUPABASE_URL,
     },
 
     APP: {
@@ -54,7 +49,6 @@ module.exports = function (environment) {
   }
 
   if (environment === "production") {
-    ENV.firebase.apiKey = process.env.FIREBASE_PROD_API_KEY;
     // here you can enable a production-specific feature
   }
 

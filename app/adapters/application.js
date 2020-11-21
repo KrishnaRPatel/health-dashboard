@@ -1,7 +1,14 @@
-import FirestoreAdapter from 'emberfire/adapters/firestore';
+import RESTAdapter from "@ember-data/adapter/rest";
+import { computed } from "@ember/object";
+import ENV from "health-dashboard/config/environment";
 
-export default FirestoreAdapter.extend({
-    // Uncomment the following lines to enable offline persistence and multi-tab support
-    // enablePersistence: true,
-    // persistenceSettings: { synchronizeTabs: true }
+export default RESTAdapter.extend({
+  host: ENV.supabase.SUPABASE_URL,
+  namespace: "rest/v1",
+  headers: computed(function () {
+    return {
+      API_KEY: ENV.supabase.SUPABASE_KEY,
+      ANOTHER_HEADER: "Some header value",
+    };
+  }),
 });

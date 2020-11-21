@@ -1,10 +1,18 @@
 import Route from "@ember/routing/route";
+import { inject as service } from "@ember/service";
 
-export default Route.extend({
-  model: function () {
-    return this.store.query("health-detail", {
-      orderBy: { publishedAt: "desc" },
-      limit: 20,
-    });
-  },
-});
+export default class HealthDetailsRoute extends Route {
+  @service fitness;
+
+  async model() {
+    const { data, error } = await this.fitness.supabase
+      .from("fitness")
+      .select("dates, distance")
+      .limit(10);
+    if (error) {
+      throw error;
+    } else {
+      return data;
+    }
+  }
+}
