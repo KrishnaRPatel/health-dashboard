@@ -14,8 +14,6 @@ export default class FitnessService extends Service {
           Authorization: `Bearer ${ENV.supabase.SUPABASE_KEY}`,
         },
       });
-      // ENV.supabase.SUPABASE_URL,
-      //   ENV.supabase.SUPABASE_KEY
     }
   }
 }
