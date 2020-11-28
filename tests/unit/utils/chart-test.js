@@ -1,4 +1,8 @@
-import { transformData, shapeData } from "health-dashboard/utils/chart";
+import {
+  transformData,
+  shapeData,
+  formatDate,
+} from "health-dashboard/utils/chart";
 import { module, test } from "qunit";
 
 module("Unit | Utility | chart", function () {
@@ -51,7 +55,6 @@ module("Unit | Utility | chart", function () {
     );
   });
 
-  //FIXME: A utility class that returns the data for specified date range
   test("shapeData shapes data to chart readable content", function (assert) {
     const transformedData = transformData(rawData, keys);
     assert.deepEqual(
@@ -176,6 +179,19 @@ module("Unit | Utility | chart", function () {
         series: [],
       },
       "if start date is not in transformedData dates array, return empty array"
+    );
+  });
+
+  test("formatDate changes date formatting on a datestring", function (assert) {
+    assert.strictEqual(
+      formatDate("2018-12-31"),
+      "12/31/18",
+      "transforms dates without included options"
+    );
+    assert.strictEqual(
+      formatDate("2018-12-31", false),
+      "12/31",
+      "transforms dates with year option set to false"
     );
   });
 });

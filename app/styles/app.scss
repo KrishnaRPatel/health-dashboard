@@ -1,11 +1,13 @@
-html {
-  font-size: 18px;
-}
+// global
 
-body {
-  margin: 0 auto;
-  max-width: 50em;
-  line-height: 1.5;
-  padding: 4em 1em;
-  font: 1em "Roboto", Helvetica, Arial, sans-serif;
-}
+@import 'partials/colors';
+@import 'partials/base';
+// To customize the colors of each series both of these variables are required.
+// ct-series-names needs to be the same length as ct-series-colors.
+
+// ui
+@import 'partials/chartist-defaults';
+
+// components
+
+@import "chartist/chartist.scss";

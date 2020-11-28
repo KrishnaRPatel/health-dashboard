@@ -1,9 +1,12 @@
-'use strict';
+"use strict";
 
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp = require("ember-cli/lib/broccoli/ember-app");
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
+    "ember-cli-chartist": {
+      useCustomCSS: true,
+    },
     // Add options here
   });
 

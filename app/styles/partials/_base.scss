@@ -1,0 +1,17 @@
+@import 'colors';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+html {
+  font-size: 18px;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 50em;
+  line-height: 1.5;
+  padding: 4em 1em;
+  font: 1em "Roboto", Helvetica, Arial, sans-serif;
+  background-color: $color-blue-gray-50;
+  ::-moz-selection { background: $color-red-A100; }
+  ::selection { background: $color-red-A100; }
+}

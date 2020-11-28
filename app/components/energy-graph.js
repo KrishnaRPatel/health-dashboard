@@ -22,6 +22,7 @@ export default class EnergyGraphComponent extends Component {
   get chartOptions() {
     const options = {
       stackBars: true,
+      low: 1200,
     };
     return options;
   }

@@ -73,4 +73,27 @@ export const shapeData = (
   return shapedData;
 };
 
-export default { transformData, shapeData };
+/**
+ * Changes server date to formatted date for better labelling
+ *
+ * @function
+ *
+ * @param {String} serverDate - "2018-12-31"
+ * @returns {String} - formattedDate - "12/31/18"
+ */
+export const formatDate = (serverDate, includeYear = true) => {
+  if (serverDate.length !== 10) {
+    console.error('serverDate must be "YYYY-MM-DD"');
+    return serverDate;
+  }
+  let newDate = serverDate.split("-");
+  if (includeYear) {
+    newDate.push(newDate.shift());
+    newDate[2] = newDate[2].substring(2, 4);
+  } else {
+    newDate.shift();
+  }
+  return newDate.join("/");
+};
+
+export default { transformData, shapeData, formatDate };
