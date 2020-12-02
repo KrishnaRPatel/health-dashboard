@@ -1,13 +1,11 @@
 // global
-
 @import 'partials/colors';
 @import 'partials/base';
-// To customize the colors of each series both of these variables are required.
-// ct-series-names needs to be the same length as ct-series-colors.
+
+// vendor
+@import 'partials/chartist-defaults';
+@import "chartist/chartist.scss";
+@import "partials/chartist-overrides";
 
 // ui
-@import 'partials/chartist-defaults';
-
-// components
-
-@import "chartist/chartist.scss";
+@import "partials/chart";

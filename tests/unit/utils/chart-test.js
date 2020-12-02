@@ -171,6 +171,53 @@ module("Unit | Utility | chart", function () {
         transformedData,
         "dates",
         ["distance", "workoutType"],
+        4,
+        "2019-01-08"
+      ),
+      {
+        labels: ["2019-01-06", "2019-01-07", "2019-01-08", "2019-01-09"],
+        series: [
+          [1.409, 2.67, 1.497, 1.593],
+          ["b", "b", "a", "c"],
+        ],
+      },
+      "shapeData returns last [limit] number of data if limit would go past the last element"
+    );
+
+    assert.deepEqual(
+      shapeData(
+        transformedData,
+        "dates",
+        ["distance", "workoutType"],
+        11,
+        "2019-01-02"
+      ),
+      {
+        labels: [
+          "2018-12-31",
+          "2019-01-01",
+          "2019-01-02",
+          "2019-01-03",
+          "2019-01-04",
+          "2019-01-05",
+          "2019-01-06",
+          "2019-01-07",
+          "2019-01-08",
+          "2019-01-09",
+        ],
+        series: [
+          [1.355, 1.569, 2.576, 3.874, 4.77, 1.676, 1.409, 2.67, 1.497, 1.593],
+          ["a", "a", "c", "b", "b", "b", "b", "b", "a", "c"],
+        ],
+      },
+      "shapeData returns all elements if the limit is greater than the dataset length"
+    );
+
+    assert.deepEqual(
+      shapeData(
+        transformedData,
+        "dates",
+        ["distance", "workoutType"],
         0,
         "2019-02-04"
       ),

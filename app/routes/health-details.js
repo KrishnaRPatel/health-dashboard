@@ -10,10 +10,10 @@ export default class HealthDetailsRoute extends Route {
       "dates",
       "calories_active",
       "calories_passive",
-      "flights",
-      "steps",
-      "distance",
-      "exercise_time",
+      // "flights", TODO: Add these after adding new graphs
+      // "steps",
+      // "distance",
+      // "exercise_time",
     ];
     const { data, error } = await this.fitness.supabase
       .from("fitness")

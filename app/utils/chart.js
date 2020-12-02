@@ -48,11 +48,19 @@ export const shapeData = (
   limit,
   startDate
 ) => {
+  let leftIndex = startDate ? transformedData.dates.indexOf(startDate) : 0;
   if (!limit) {
-    limit = transformedData[xAxis].length;
+    limit = transformedData[xAxis].length - leftIndex;
   }
 
-  const leftIndex = startDate ? transformedData.dates.indexOf(startDate) : 0;
+  if (transformedData[xAxis].length - leftIndex < limit) {
+    let pushLeft = transformedData[xAxis].length - limit;
+    if (pushLeft < 0) {
+      leftIndex = 0;
+    } else {
+      leftIndex = pushLeft;
+    }
+  }
 
   if (leftIndex === -1) {
     console.error("could not find start date in transformed data");
@@ -60,7 +68,9 @@ export const shapeData = (
   }
 
   const shapedData = {
-    labels: transformedData[xAxis].slice(leftIndex, leftIndex + limit),
+    labels: transformedData[xAxis]
+      .slice(leftIndex, leftIndex + limit)
+      .map((date) => formatDate(date)),
     series: [],
   };
 
@@ -76,7 +86,7 @@ export const shapeData = (
 /**
  * Changes server date to formatted date for better labelling
  *
- * @function
+ * @function formatDate
  *
  * @param {String} serverDate - "2018-12-31"
  * @returns {String} - formattedDate - "12/31/18"
