@@ -2,6 +2,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { shapeData } from "health-dashboard/utils/chart";
+import { dateToISO } from "../utils/chart";
 
 const MIN_DATE = {
   date: new Date("2020-01-01"),
@@ -64,5 +65,18 @@ export default class EnergyGraphComponent extends Component {
     if (date > new Date(this.maxDate)) {
       this.startDate = this.maxDate;
     }
+  }
+
+  @action
+  changeWeek(direction) {
+    const newDate = new Date(this.startDate);
+    if (direction === "next") {
+      newDate.setUTCDate(newDate.getDate() + 7); // add a week
+    }
+    if (direction === "previous") {
+      newDate.setUTCDate(newDate.getDate() - 7); // subtract a week
+    }
+    this.startDate = dateToISO(newDate);
+    this.validateDate();
   }
 }

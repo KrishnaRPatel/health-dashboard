@@ -106,4 +106,16 @@ export const formatDate = (serverDate, includeYear = true) => {
   return newDate.join("/");
 };
 
-export default { transformData, shapeData, formatDate };
+/**
+ * Converts a Date object to an ISO date string with the time removed
+ *
+ * @function dateToISO
+ *
+ * @param {String} date - JavaScript Date Object
+ * @returns {String} - ISO date string without time component - ex. "2018-12-30"
+ */
+export const dateToISO = (date) => {
+  return date.toISOString().slice(0, 10);
+};
+
+export default { dateToISO, transformData, shapeData, formatDate };
