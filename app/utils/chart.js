@@ -70,7 +70,7 @@ export const shapeData = (
   const shapedData = {
     labels: transformedData[xAxis]
       .slice(leftIndex, leftIndex + limit)
-      .map((date) => formatDate(date)),
+      .map((date) => formatDate(date, false)),
     series: [],
   };
 

@@ -13,6 +13,36 @@ export default class EnergyGraphComponent extends Component {
   @tracked startDate = this.maxDate;
   @tracked days = 7;
 
+  get draw() {
+    return (data) => {
+      if (data.type === "bar") {
+        //bottom bar
+        if (data.seriesIndex === 0) {
+          data.element.animate({
+            y2: {
+              dur: 500,
+              from: data.y1,
+              to: data.y2,
+            },
+          });
+        }
+
+        //top bar
+        if (data.seriesIndex === 1) {
+          data.element.animate({
+            y2: {
+              begin: 500,
+              dur: 500,
+              from: data.y1,
+              to: data.y2,
+              easing: "easeOutQuart",
+            },
+          });
+        }
+      }
+    };
+  }
+
   get maxDate() {
     return this.args.data.dates[this.args.data.dates.length - 1];
   }
@@ -69,6 +99,7 @@ export default class EnergyGraphComponent extends Component {
 
   @action
   changeWeek(direction) {
+    //TODO: Bind this to arrow keys as well
     const newDate = new Date(this.startDate);
     if (direction === "next") {
       newDate.setUTCDate(newDate.getDate() + 7); // add a week
