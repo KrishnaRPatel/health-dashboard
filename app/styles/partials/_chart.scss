@@ -2,10 +2,14 @@
   &__container {
     border: 1px solid $color-blue-gray-200;
     border-radius: 2px;
-    padding: 3em;
+    padding: 1em;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.4s cubic-bezier(.25,.8,.25,1);
-    
+
+    @include media('>tablet'){
+      padding: 2em;
+    }
+
     &:hover {
       box-shadow: 12px 14px 28px rgba(0,0,0,0.12), 0 10px 10px rgba(0,0,0,0.24);
     }
@@ -13,22 +17,93 @@
 
   &__header {
     font-size: 1.35rem;
-    text-align: center;
     margin-bottom: 1em;
+    display: grid;
+    grid-template-columns: [left] 1fr [center-left] 3fr [center-right] 3fr [right] 1fr;
+    grid-template-rows: [first-row] 1fr [second-row] 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+
+  &__title {
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 1;
+    
+    @include media('>tablet'){
+      grid-column: 2 / span 1;
+      grid-row: 1 / span 2;
+    }
   }
 
   &__date-picker {
+    font: 1em "Roboto", Helvetica, Arial, sans-serif;
+    cursor: pointer;
     background-color: $color-blue-gray-50;
     border: none;
     border-bottom: 1px solid $color-gray-900;
-    font: 1em "Roboto", Helvetica, Arial, sans-serif;
     transition: all 0.25s ease-in;
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 1;
+
+    @include media('>tablet'){
+      grid-column: 3 / span 1;
+      grid-row: 1 / span 2;
+    }
+
+    &:hover {
+      background-color: $color-blue-gray-100;
+      outline: none;
+    }
 
     &:focus {
       background-color: $color-blue-gray-100;
       outline: none;
       border: none;
       border-bottom: 2px solid $color-secondary;
+    }
+  }
+
+  &__nav-button {
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s ease-in;
+
+    &:hover {
+      background-color: $color-blue-gray-100;
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $color-secondary;
+    }
+
+    &--left {
+      grid-column: 1 / span 1;
+      grid-row: 1 / span 2;
+    }
+
+    &--right {
+      grid-column: 4 / span 1;
+      grid-row: 1 / span 2;
+    }
+  }
+
+  &__nav-icon {
+    width: 1em;
+    height: 1em;
+    position: relative;
+    top: 2px;
+    transition: all 0.25s ease-in;
+
+    &:hover {
+      fill: $color-secondary;
+    }
+
+    &--left {
+      transform: scale(-1);
     }
   }
 }

@@ -1,8 +1,10 @@
 <div class="chart chart__container" ...attributes>
   <div class="chart chart__header">
-    <button {{on "click" (fn this.changeWeek "previous")}}>PREV WEEK</button>
-    {{!-- TODO: This needs to be styled--}}
-    {{this.chartType}}
+    <button type="button" class="chart chart__nav-button chart__nav-button--left" {{on "click" (fn this.changeWeek "previous")}}>
+      {{svg-jar "double_arrow-24px" class="chart chart__nav-icon chart__nav-icon--left"}}
+      <span class="sr-only">Previous Week</span>
+    </button>
+    <span class="chart chart__title">{{this.chartType}}</span>
     <Input
       class="chart chart__date-picker"
       @type="date"
@@ -12,8 +14,17 @@
       max={{this.maxDate}}
       pattern="\d{4}-\d{2}-\d{2}"
     />
-    <button {{on "click" (fn this.changeWeek "next")}}>NEXT WEEK</button>
-    {{!-- TODO: This needs to be styled--}}
+    <button type="button" class="chart chart__nav-button chart__nav-button--right" {{on "click" (fn this.changeWeek "next")}}>
+      {{svg-jar "double_arrow-24px" class="chart chart__nav-icon chart__nav-icon--right"}}
+      <span class="sr-only">Next Week</span>  
+    </button>
   </div>
-  <ChartistChart class="chart chart__graph" @ratio="ct-perfect-fourth" @type="bar" @options={{this.chartOptions}} @data={{this.chartData}} />
+  <ChartistChart 
+    class="chart chart__graph"
+    @ratio="ct-perfect-fourth"
+    @type="bar"
+    @options={{this.chartOptions}}
+    @data={{this.chartData}}
+    @onDraw={{this.draw}}
+  />
 </div>
