@@ -24,7 +24,7 @@ export default class HealthDetailsRoute extends Route {
     if (error) {
       console.error(error);
     } else {
-      return transformData(data, keys);
+      return { transformedData: transformData(data, keys), rawData: data };
     }
   }
 }

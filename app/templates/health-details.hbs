@@ -1,8 +1,9 @@
-<EnergyGraph @data={{this.model}} @type={{"Week"}}/>
-
-
 {{!-- Calories graph --}}
+<EnergyGraph @data={{this.model.transformedData}} @type={{"Week"}}/>
 
-{{!-- Movement graph --}}
+{{!-- TODO: Movement graph --}}
 
-{{!-- Exercise Minutes graph --}}
+{{!-- TODO: Exercise Minutes graph --}}
+
+{{!-- Calendar Heatmap --}}
+<CalendarHeatmap @data={{this.model.rawData}} />

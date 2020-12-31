@@ -1,6 +1,7 @@
 .chart {
   &__container {
     border: 1px solid $color-blue-gray-200;
+    margin: 1em auto;
     border-radius: 2px;
     padding: 1em;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -16,7 +17,7 @@
   }
 
   &__header {
-    font-size: 1.35rem;
+    font-size: 1.35em;
     margin-bottom: 1em;
     display: grid;
     grid-template-columns: [left] 1fr [center-left] 3fr [center-right] 3fr [right] 1fr;
@@ -104,6 +105,30 @@
 
     &--left {
       transform: scale(-1);
+    }
+  }
+
+  &__legend {
+    text-align: center;
+    
+    &--primary {
+      display: inline-block;
+      height: 12PX;
+      width: 12PX;
+      background-color: $color-red-900;
+    }
+    &--secondary {
+      display: inline-block;
+      height: 12PX;
+      width: 12PX;
+      background-color: $color-red-400;
+    }
+  }
+
+  &__graph {
+    &--heatmap {
+      display: flex;
+      align-items: flex-end;
     }
   }
 }
