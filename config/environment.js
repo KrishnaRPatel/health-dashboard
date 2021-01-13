@@ -16,6 +16,15 @@ module.exports = function (environment) {
         Date: false,
       },
     },
+    contentSecurityPolicy: {
+      "default-src": "'self'",
+      "script-src": "'self' *.krishnapa.tel",
+      "font-src": "'self' fonts.googleapis.com fonts.gstatic.com",
+      "connect-src": "'self'",
+      "img-src": "self",
+      "style-src": "self",
+      "media-src": "self",
+    },
 
     supabase: {
       SUPABASE_KEY: process.env.SUPABASE_KEY,
