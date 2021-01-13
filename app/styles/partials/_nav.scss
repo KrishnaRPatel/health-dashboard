@@ -5,17 +5,28 @@
     background-color: $color-blue-gray-100;
     border-radius: 2px;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+    flex-flow: column wrap;
+    justify-content: center;
+    padding: 1em;
+    
+    @include media(">=tablet") {
+      justify-content: flex-start;
+      flex-flow: row wrap;
+    }
   }
 
   &__link {
     text-decoration: none;
     display: block;
-    padding: 1em;
+    padding: .5em 0;
     color: $color-text;
     transition: all 0.25s ease-in;
     font-weight: 500;
+    font-size: 1.25rem;
+
+    @include media(">=tablet") {
+      padding: .5em 1em;
+    }
 
     &.active {
       text-decoration: underline $color-text solid;

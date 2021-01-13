@@ -64,7 +64,7 @@ export default class EnergyGraphComponent extends Component {
       this.args.data,
       "dates",
       ["calories_passive", "calories_active"],
-      this.days, //FIXME: change this to a set of three options
+      this.days,
       this.startDate
     );
   }
@@ -76,13 +76,24 @@ export default class EnergyGraphComponent extends Component {
     return this.args.type;
   }
 
-  get chartOptions() {
-    const options = {
-      stackBars: true,
-      low: 1200,
-    };
-    return options;
-  }
+  chartOptions = {
+    stackBars: true,
+    low: 1200,
+  };
+
+  chartResOptions = [
+    [
+      "screen and (max-width: 376px)",
+      {
+        axisX: {
+          labelInterpolationFnc: (val) => {
+            return val.slice(3);
+          },
+          //showLabel: false,
+        },
+      },
+    ],
+  ];
 
   @action
   validateDate() {
