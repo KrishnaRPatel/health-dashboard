@@ -20,7 +20,6 @@ export default class CalendarHeatmapComponent extends Component {
     const timeWeek = d3.utcSunday;
     const countDay = (d) => d.getUTCDay();
     const formatDay = (d) => {
-      console.log(d);
       return ["", "Mon", "", "We", "", "Fri", ""][d];
     };
 
