@@ -1,9 +1,17 @@
-# ember-quickstart
+# Health-Dashboard
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is the https://tmi.krishnapa.tel/ health dashboard aka Krishna's TMI. It's meant as a health dashboard to track daily exercise activity.
 
 ## Prerequisites
+
+A db with health info is required. Here is an example:
+
+| dates      | calories_passive | calories active |
+| ----------- | ----------- | ----------- |
+| 2019-01-03 | 1972.76 | 574.602 |
+| 2019-01-02 | 1945.61 | 431.924 |
+
+`shapeData` and the other `chart.js` utils show what format the dashboard will work with.
 
 You will need the following things properly installed on your computer.
 
@@ -15,8 +23,8 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd ember-quickstart`
-* `npm install`
+* `cd health-dashboard`
+* `yarn install` or `npm install`
 
 ## Running / Development
 
@@ -46,7 +54,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+Host static assets from the build process at root level (`example.com/`) or change the root url in the app build config.
 
 ## Further Reading / Useful Links
 
