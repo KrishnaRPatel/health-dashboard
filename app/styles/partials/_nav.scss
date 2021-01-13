@@ -1,0 +1,31 @@
+.nav {
+  &__bar {
+    list-style: none;
+    margin: 0;
+    background-color: $color-blue-gray-100;
+    border-radius: 2px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+  }
+
+  &__link {
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+    color: $color-text;
+    transition: all 0.25s ease-in;
+    font-weight: 500;
+
+    &.active {
+      text-decoration: underline $color-text solid;
+    }
+
+    &:hover {
+      color: $color-secondary;
+      &.active {
+        text-decoration: underline $color-secondary solid;
+      }
+    }
+  }
+}
