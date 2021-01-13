@@ -34,6 +34,10 @@
     @include media(">tablet") {
       grid-column: 2 / span 1;
       grid-row: 1 / span 2;
+      
+      &--sole {
+        grid-column: 2 / span 2;
+      }
     }
   }
 
@@ -130,6 +134,8 @@
     &--heatmap {
       display: flex;
       align-items: flex-end;
+      flex-direction: row;
+      justify-content: center;
     }
   }
 }
