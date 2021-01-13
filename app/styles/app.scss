@@ -1,13 +1,15 @@
 // global
-@import 'partials/colors';
-@import 'partials/base';
-@import 'partials/utilities';
-@import 'partials/include-media';
+@import "partials/include-media";
+@import "partials/utilities";
+@import "partials/colors";
+@import "partials/base";
 
 // vendor
-@import 'partials/chartist-defaults';
+@import "partials/chartist-defaults";
 @import "chartist/chartist.scss";
 @import "partials/chartist-overrides";
 
 // ui
+@import "partials/nav";
 @import "partials/chart";
+@import "partials/article";

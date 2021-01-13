@@ -1,6 +1,6 @@
 <div class="chart chart__container" ...attributes>
   <div class="chart chart__header">
-    <button type="button" class="chart chart__nav-button chart__nav-button--left" {{on "click" (fn this.changeWeek "previous")}}>
+    <button type="button" title="Previous Week" class="chart chart__nav-button chart__nav-button--left" {{on "click" (fn this.changeWeek "previous")}}>
       {{svg-jar "double_arrow-24px" class="chart chart__nav-icon chart__nav-icon--left"}}
       <span class="sr-only">Previous Week</span>
     </button>
@@ -14,17 +14,25 @@
       max={{this.maxDate}}
       pattern="\d{4}-\d{2}-\d{2}"
     />
-    <button type="button" class="chart chart__nav-button chart__nav-button--right" {{on "click" (fn this.changeWeek "next")}}>
+    <button type="button" title="Next Week" class="chart chart__nav-button chart__nav-button--right" {{on "click" (fn this.changeWeek "next")}}>
       {{svg-jar "double_arrow-24px" class="chart chart__nav-icon chart__nav-icon--right"}}
       <span class="sr-only">Next Week</span>  
     </button>
   </div>
   <ChartistChart 
     class="chart chart__graph"
-    @ratio="ct-perfect-fourth"
+    @ratio="ct-octave"
     @type="bar"
     @options={{this.chartOptions}}
     @data={{this.chartData}}
     @onDraw={{this.draw}}
   />
+  <div class="chart chart__legend">
+    <div class="chart chart__legend chart__legend--primary"></div>
+    <span>Active Calories Burned</span>
+  </div>
+  <div class="chart chart__legend">
+    <div class="chart chart__legend chart__legend--secondary"></div>
+    <span>Passive Calories Burned</span>
+  </div>
 </div>

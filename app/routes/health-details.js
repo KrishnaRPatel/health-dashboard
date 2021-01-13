@@ -20,11 +20,11 @@ export default class HealthDetailsRoute extends Route {
       .select(keys.join(","))
       .order("dates", { ascending: true })
       .gte("dates", "2020-01-01 00:00:00")
-      .limit(365);
+      .limit(1000);
     if (error) {
       console.error(error);
     } else {
-      return transformData(data, keys);
+      return { transformedData: transformData(data, keys), rawData: data };
     }
   }
 }
